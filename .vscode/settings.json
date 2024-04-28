@@ -1,0 +1,7 @@
+{
+  "mochaExplorer.files": "src/**/__tests__/*-test.ts",
+  "mochaExplorer.nodeArgv": ["--loader=ts-node/esm/transpile-only"],
+  "eslint.options": {
+    "rulePaths": ["./resources/eslint-internal-rules/"]
+  }
+}

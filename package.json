@@ -1,0 +1,58 @@
+{
+  "name": "@bigschema/test-scaffold",
+  "version": "1.0.0-alpha.1",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "typesVersions": {
+    ">=4.4.0": {
+      "*": [
+        "*"
+      ]
+    }
+  },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigschema/test-scaffold.git"
+  },
+  "engines": {
+    "node": "^16.19.0 || ^18.14.0 || >=19.7.0"
+  },
+  "scripts": {
+    "preversion": ". ./resources/checkgit.sh && npm ci --ignore-scripts",
+    "version": "node --loader ts-node/esm resources/gen-version.ts && npm test && git add src/version.ts",
+    "test": "npm run lint && npm run check && npm run prettier:check && npm run check:spelling",
+    "lint": "eslint --cache --max-warnings 0 --rulesdir resources/eslint-internal-rules/ .",
+    "check": "tsc --pretty",
+    "prettier": "prettier --cache --cache-strategy metadata --write --list-different .",
+    "prettier:check": "prettier --cache --cache-strategy metadata --check .",
+    "check:spelling": "cspell --cache --no-progress \"**/*\"",
+    "build:npm": "node --loader ts-node/esm resources/build-npm.ts",
+    "diff:npm": "node --loader ts-node/esm resources/diff-npm-package.ts"
+  },
+  "devDependencies": {
+    "@types/chai": "4.3.4",
+    "@types/mocha": "10.0.1",
+    "@types/node": "18.15.11",
+    "@types/prettier": "2.7.2",
+    "@typescript-eslint/eslint-plugin": "5.59.0",
+    "@typescript-eslint/parser": "5.59.0",
+    "chai": "4.3.7",
+    "clsx": "1.2.1",
+    "cspell": "6.31.1",
+    "eslint": "8.38.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "15.7.0",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-tsdoc": "0.2.17",
+    "mocha": "10.2.0",
+    "prettier": "2.8.7",
+    "ts-node": "10.9.1",
+    "typedoc": "0.24.4",
+    "typescript": "5.0.4"
+  },
+  "publishConfig": {
+    "tag": "alpha"
+  }
+}
